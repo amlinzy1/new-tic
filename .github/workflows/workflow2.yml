@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+ push:
+   branches:
+       -main
+
+      jobs:
+     build:
+      runs-on: ubuntu-latest
+      steps:
+     -uses: actions/checkout@v3
+     -uses: actions/setup-node@v3
+     -name: Install dependencies
+      run: npm install
+     -name: Build Website
+      run: npm run build
+     -name: Set AWS credentials
+      uses: aws-action/configure-aws-credentials@v1
+      with:
+       aws_accessvgg_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+       aws-region: us-east-1
+     -name: Copy to S3
+      run: aws s3 sync ./build/. s3://tic-tac-website
+      - name: S3 Deploy
+  uses: Reggionick/s3-deploy@v3.2.0
+          with:
+            folder: build
+            bucket: ${{ secrets.S3_BUCKET }}
+            bucket-region: ${{ secrets.S3_BUCKET_REGION }}
