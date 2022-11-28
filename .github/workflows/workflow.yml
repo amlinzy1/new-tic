@@ -20,6 +20,7 @@ jobs:
           
         - name: Copy to S3
           run: aws s3 sync ./build/. s3://tic-tac-website
+           AWS_DEFAULT_REGION
           
         - name: S3 Deploy
           uses: Reggionick/s3-deploy@v3.2.0
