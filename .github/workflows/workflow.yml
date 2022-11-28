@@ -5,8 +5,9 @@ jobs:
   run:
     runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws-region: us-east-2
      
     steps:
         - uses: actions/checkout@v3
@@ -14,8 +15,8 @@ jobs:
         - name: Install dependencies
           run: npm install
           
-        - name: Build
-          run: npm build
+        - name: Build Website
+          run: npm run build
           
         - name: Copy to S3
           run: aws s3 sync ./build/. s3://tic-tac-website
