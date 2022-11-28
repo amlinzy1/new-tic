@@ -3,10 +3,11 @@ on: [push]
 
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     env:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws-region: us-east-2
        
      
     steps:
@@ -18,9 +19,6 @@ jobs:
         - name: Build Website
           run: npm run build
           
-        - name: Copy to S3
-          run: aws s3 sync ./build/. s3://tic-tac-website
-           AWS_DEFAULT_REGION
           
         - name: S3 Deploy
           uses: Reggionick/s3-deploy@v3.2.0
