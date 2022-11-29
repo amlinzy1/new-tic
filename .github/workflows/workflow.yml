@@ -1,4 +1,4 @@
-name: Example workflow for S3 Deploy
+name: Tic-tac workflow for S3 Deploy
 on: [push]
 
 jobs:
@@ -17,8 +17,8 @@ jobs:
         - name: set AWS credentials
           uses: aws-actions/configure-aws-credentials@v1
           with:
-               aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-               aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+               aws_access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+               aws_secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                aws-region: us-east-2
         - name: Deploy to S3
           run: npm run deploy
