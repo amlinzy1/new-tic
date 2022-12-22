@@ -1,30 +1,22 @@
-
 version: 0.0
-os: ubuntu
-
+os: windows
 files:
-  - source: /
-    destination: /home/ec2-user/server
-
-permissions:
-  - object: /
-    pattern: "**"
-    owner: ec2-user
-    group: ec2-user
-
+  - source: Config/config.txt
+    destination: /webapps/Config
+  - source: source
+    destination: /webapps/myApp
 hooks:
-
   BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 300
-      runas: root
-  
+    - location: Scripts/UnzipResourceBundle.sh
+    - location: Scripts/UnzipDataBundle.sh
   AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 300
-      runas: root
-
+    - location: Scripts/RunResourceTests.sh
+      timeout: 180
   ApplicationStart:
-    - location: scripts/app_start.sh
-      timeout: 300
-      runas: root
+    - location: Scripts/RunFunctionalTests.sh
+      timeout: 3600
+  ValidateService:
+    - location: Scripts/MonitorService.sh
+      timeout: 3600
+      runas: codedeployuser
+
