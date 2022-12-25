@@ -18,4 +18,5 @@ artifacts:
     - src/**/*
     - package.json
     - appspec.yml
+     - ... other files to include in your build ...
     - scripts/**/*
