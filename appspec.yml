@@ -2,9 +2,9 @@ version: 0.0
 os: windows
 files:
   - source: Config/config.txt
-    destination: /webapps/Config
+    destination: c:\temp\webapps\Config
   - source: source
-    destination: /webapps/myApp
+    destination: c:\temp\webapps\myApp
 hooks:
   BeforeInstall:
     - location: Scripts/UnzipResourceBundle.sh
