@@ -7,8 +7,8 @@ files:
     destination: /webapps/myApp
 hooks:
   BeforeInstall:
-    - location: Scripts/UnzipResourceBundle.sh
-    - location: Scripts/UnzipDataBundle.sh
+    - location: C:/ProgramData/Amazon/CodeDeploy
+    - location: C:/ProgramData/Amazon/CodeDeploy
   AfterInstall:
     - location: Scripts/RunResourceTests.sh
       timeout: 180
