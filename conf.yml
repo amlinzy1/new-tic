@@ -1,0 +1,8 @@
+---
+:log_dir: 'Amazon/CodeDeploy/log'
+:root_dir: 'Amazon/CodeDeploy'
+:verbose: true
+:wait_between_runs: 1
+:wait_after_error: 1
+:bundle_name: 'artifact_bundle.tar'
+
