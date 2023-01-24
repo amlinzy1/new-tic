@@ -2,7 +2,7 @@ version: 0.0
 os: windows
 files:
   - source: .\install.txt
-    destination: c:\Users\stati\new-tic
+    destination: '**/*'
     file_exists_behavior: OVERWRITE 
 hooks:
   BeforeInstall:
